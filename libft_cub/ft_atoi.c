@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibenmain <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 14:42:01 by ibenmain          #+#    #+#             */
-/*   Updated: 2021/12/04 15:46:13 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:53:10 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+
 
 int	ft_atoi(const char *str)
 {
@@ -33,6 +33,5 @@ int	ft_atoi(const char *str)
 	}
 	if (signe == -1)
 		return (signe * nb);
-	else
-		return (nb);
+	return (nb);
 }

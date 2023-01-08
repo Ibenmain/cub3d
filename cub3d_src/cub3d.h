@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:24:59 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/08 13:24:19 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/08 16:20:32 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ typedef struct s_map1
 	char	*ea_path;
 	char	*floor_line;
 	char	*color_line;
+	int		f_dup;
+	int		c_dup;
 }				t_map1;
 
 typedef struct s_data{

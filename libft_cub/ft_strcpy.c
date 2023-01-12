@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 18:58:25 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/11 15:58:16 by ibenmain         ###   ########.fr       */
+/*   Created: 2023/01/09 23:17:09 by ibenmain          #+#    #+#             */
+/*   Updated: 2023/01/09 23:23:11 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strcpy(char *src)
 {
-	int	i;
+	char	*dest;
+	int		i;
 
 	i = 0;
-	while ((s1[i] && s2[i]) && (s1[i] == s2[i]))
+	dest = (char *)malloc(sizeof(char *) * ft_strlen(src));
+	if (!dest)
+		return (NULL);
+	while (src[i] != '\n')
+	{
+		dest[i] = src[i];
 		i++;
-	return (s1[i] - s2[i]);
+	}
+	dest[i] = '\0';
+	return (dest);
 }

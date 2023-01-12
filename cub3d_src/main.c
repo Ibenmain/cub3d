@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:09:39 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/08 16:02:09 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/12 18:56:06 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 int	ft_check_name_map(char *map_name)
 {
 	int	len;
+	int	fd;
 
+	fd = open(map_name, O_RDONLY);
+	if (fd == -1)
+		return (1);
 	len = ft_strlen(map_name);
 	if (map_name[len - 4] == '.' && map_name[len - 3] == 'c' && \
 		map_name[len - 2] == 'u' && map_name[len - 1] == 'b')
@@ -27,9 +31,7 @@ void	ft_map_size(char *map, t_data *data)
 {
 	int		fd;
 	char	*line;
-	int		i;
 
-	data->biggest_line = 0;
 	data->line_map = 0;
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
@@ -37,12 +39,8 @@ void	ft_map_size(char *map, t_data *data)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		i = 0;
 		data->line_map += 1;
-		while (line[i] == ' ')
-			i++;
-		if (line[i] == '1' && ft_strlen(line) > data->biggest_line)
-			data->biggest_line = ft_strlen(line);
+		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
@@ -72,6 +70,18 @@ int	ft_check_error_tab(char **tab)
 	return (nb);
 }
 
+void	test_len(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->map[i])
+	{
+		printf("%s\n", data->map[i]);
+		i++;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_data	*data;
@@ -80,12 +90,23 @@ int	main(int ac, char **av)
 	if (!data)
 		return (1);
 	if (ac != 2 || ft_check_name_map(av[1]))
-		return (free(data), printf("Error:Unvalid argiments!"), 1);
+		return (free(data), printf("Error: unvalid argiments!"), 1);
 	ft_map_size(av[1], data);
 	ft_get_map(av[1], data);
-	ft_size_divide_map(data);
-	ft_divide_up_map(data);
+	ft_parssing_map(data);
+	ft_check_duplicat(data);
+	ft_get_max_line(data);
 	ft_divide_down_map(data);
-	ft_check_error_map_dir(data);
+	test_len(data);
+	// printf("%d\n", data->map1.nb_dir);
+	// system("leaks cub3d");
+	// int i = 0;
+	// while (data->map[i])
+	// {
+	// 	printf("%s\n", data->map[i]);
+	// 	i++;
+	// }
+	// ft_divide_up_map(data);
+	// ft_check_error_map_dir(data);
 	return (0);
 }

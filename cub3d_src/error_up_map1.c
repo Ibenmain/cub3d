@@ -6,11 +6,39 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 00:03:37 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/08 16:30:28 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/11 19:09:17 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	ft_strlen_slash(const char *s)
+{
+	int	len;
+
+	len = 0;
+	while (s[len] != '\n')
+		len++;
+	return (len);
+}
+
+char	*ft_strcpy(char *src)
+{
+	char	*dest;
+	int		i;
+
+	i = 0;
+	dest = (char *)malloc(sizeof(char *) * ft_strlen_slash(src));
+	if (!dest)
+		return (NULL);
+	while (src[i] != '\n')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
 
 void	ft_get_map(char *name_map, t_data *data)
 {
@@ -28,94 +56,42 @@ void	ft_get_map(char *name_map, t_data *data)
 	line = get_next_line(fd);
 	while (++i < data->line_map)
 	{
-		data->all_map[i] = line;
+		data->all_map[i] = ft_strdup(line);
+		free(line);
 		line = get_next_line(fd);
 	}
 	data->all_map[i] = NULL;
-	free(line);
 	close(fd);
 }
 
-void	ft_range_of_color(char	*line, t_data *data)
-{
-	char	**tab;
-	int		len;
-
-	tab = ft_split(line, ',');
-	len = ft_check_error_tab(tab);
-	if ((ft_atoi(tab[0]) < 0 || ft_atoi(tab[0]) > 255 || ft_atoi(tab[0]) == 0) || (ft_atoi(tab[1]) < 0 || ft_atoi(tab[1]) > 255 || ft_atoi(tab[1]) == 0) || (ft_atoi(tab[2]) < 0 || ft_atoi(tab[2]) > 255 || ft_atoi(tab[2]) == 0) || len != 3)
-		ft_print_error("Error map", data);
-	data->val1 = ft_atoi(tab[0]);
-	data->val2 = ft_atoi(tab[1]);
-	data->val3 = ft_atoi(tab[2]);
-}
-
-void	ft_color_and_floor(char **tab, t_data *data)
-{
-	if (!ft_strcmp(tab[0], "F") && ft_strlen(tab[0]) == 1)
-	{
-		data->map1.floor_line = tab[0];
-		data->map1.f_dup += 1;
-		ft_range_of_color(tab[1], data);
-	}
-	else if (!ft_strcmp(tab[0], "C") && ft_strlen(tab[0]) == 1)
-	{
-		data->map1.color_line = tab[0];
-		data->map1.c_dup += 1;
-		ft_range_of_color(tab[1], data);
-	}
-}
-
-void	ft_directione(char **tab, t_data *data)
-{
-	if (!ft_strcmp(tab[0], "NO") && ft_strlen(tab[0]) == 2)
-	{
-		data->map1.no_line = tab[0];
-		data->map1.no_path = tab[1];
-		data->map1.no_dup += 1;
-	}
-	else if (!ft_strcmp(tab[0], "SO") && ft_strlen(tab[0]) == 2)
-	{
-		data->map1.so_line = tab[0];
-		data->map1.so_path = tab[1];
-		data->map1.so_dup += 1;
-	}
-	else if (!ft_strcmp(tab[0], "WE") && ft_strlen(tab[0]) == 2)
-	{
-		data->map1.we_line = tab[0];
-		data->map1.we_path = tab[1];
-		data->map1.we_dup += 1;
-	}
-	else if (!ft_strcmp(tab[0], "EA") && ft_strlen(tab[0]) == 2)
-	{
-		data->map1.ea_line = tab[0];
-		data->map1.ea_path = tab[1];
-		data->map1.ea_dup += 1;
-	}
-	ft_color_and_floor(tab, data);
-}
-
-void	ft_check_error_map_dir(t_data *data)
+void	ft_check_error_color(char **tab, t_data *data)
 {
 	int		i;
-	char	**tab;
+	int		j;
 
 	i = 0;
-	if (data->map1.nb_dir != 6)
-		ft_print_error("unvalid map!", data);
-	while (data->map_dir[i] && i < data->map1.nb_dir)
+	while (tab[i])
 	{
-		tab = ft_split(data->map_dir[i], ' ');
-		if (ft_check_error_tab(tab) != 2)
+		j = 0;
+		while (tab[i][j])
 		{
-			ft_free(tab);
-			ft_print_error("unvalid map\n", data);
+			if (tab[i][j] < '0' || tab[i][j] > '9')
+				ft_print_error("Error map", data);
+			j++;
 		}
-		ft_directione(tab, data);
 		i++;
 	}
-	if (data->map1.no_dup != 1 || data->map1.so_dup != 1 || \
-		data->map1.we_dup != 1 || data->map1.ea_dup != 1 || \
-		data->map1.f_dup != 1 || data->map1.c_dup != 1)
-		ft_print_error("unvalid map!\n", data);
+}
+
+void	ft_convert_to_int(char **tab, t_data *data)
+{
+	int		i;
+
+	i = 0;
+	while (tab[i])
+	{
+		if (ft_atoi(tab[i]) < 0 || ft_atoi(tab[i]) > 255)
+			ft_print_error("Error map", data);
+		i++;
+	}
 }

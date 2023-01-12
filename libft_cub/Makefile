@@ -6,7 +6,7 @@
 #    By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/01 21:11:52 by ibenmain          #+#    #+#              #
-#    Updated: 2023/01/05 19:05:35 by ibenmain         ###   ########.fr        #
+#    Updated: 2023/01/10 14:37:20 by ibenmain         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS = ft_atoi.c\
 	   ft_strjoin.c\
 	   ft_strlcat.c\
 	   ft_strlcpy.c\
+	   ft_strcpy.c\
 	   ft_strlen.c\
 	   ft_strncmp.c\
 	   ft_strcmp.c\

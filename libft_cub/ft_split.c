@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ibenmain <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 19:48:13 by ibenmain          #+#    #+#             */
-/*   Updated: 2021/12/01 21:55:11 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:32:24 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 static int	ft_count(char const *str, char d)

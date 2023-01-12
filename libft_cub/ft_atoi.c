@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 14:42:01 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/08 16:53:10 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/10 14:34:12 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	ft_atoi(const char *str)
 		i++;
 	while ((str[i] != '\0') && (str[i] >= '0') && (str[i] <= '9'))
 	{
-		nb = nb * 10 + str[i] - '0';
-		i++;
+		nb = nb * 10 + str[i++] - '0';
 	}
 	if (signe == -1)
 		return (signe * nb);

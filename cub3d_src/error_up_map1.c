@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 00:03:37 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/11 19:09:17 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/14 21:51:14 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_get_map(char *name_map, t_data *data)
 		ft_print_error("Error allocation\n", data);
 	fd = open(name_map, O_RDONLY);
 	if (fd == -1)
-		ft_print_error("can't open file\n", data);
+		ft_print_error("the doesn't exist\n", data);
 	i = -1;
 	line = get_next_line(fd);
 	while (++i < data->line_map)
@@ -76,7 +76,7 @@ void	ft_check_error_color(char **tab, t_data *data)
 		while (tab[i][j])
 		{
 			if (tab[i][j] < '0' || tab[i][j] > '9')
-				ft_print_error("Error map", data);
+				ft_print_error("Error: the RGB color must be digit", data);
 			j++;
 		}
 		i++;
@@ -91,7 +91,8 @@ void	ft_convert_to_int(char **tab, t_data *data)
 	while (tab[i])
 	{
 		if (ft_atoi(tab[i]) < 0 || ft_atoi(tab[i]) > 255)
-			ft_print_error("Error map", data);
+			ft_print_error("Error: out of range,\
+ the range from 0 to 255", data);
 		i++;
 	}
 }

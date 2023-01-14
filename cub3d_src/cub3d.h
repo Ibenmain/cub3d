@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:24:59 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/12 16:35:23 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/14 23:01:44 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_data{
 	char	**map;
 	int		line_map;
 	int		i;
+	int		j;
 	int		biggest_line;
 	int		val1;
 	int		val2;
@@ -79,4 +80,6 @@ void	ft_passing_error(t_data *data, char *line);
 void	ft_parssing_map(t_data *data);
 void	ft_check_duplicat(t_data *data);
 void	ft_get_max_line(t_data *data);
+void	ft_check_redirection(t_data *data);
+int		ft_check_wall(t_data *data);
 #endif

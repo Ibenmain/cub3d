@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:37:57 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/12 15:58:55 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/14 23:16:43 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ft_range_of_color(char *line, t_data *data)
 	ft_convert_to_int(tab, data);
 	len = ft_check_error_tab(tab);
 	if (len != 3)
-		ft_print_error("Error map", data);
+		ft_print_error("Error: the number of RGB\
+ must be three separated by comma", data);
 	data->val1 = ft_atoi(tab[0]);
 	data->val2 = ft_atoi(tab[1]);
 	data->val3 = ft_atoi(tab[2]);
@@ -45,5 +46,5 @@ void	ft_color_and_floor(char **tab, t_data *data)
 		ft_range_of_color(tab[1], data);
 	}
 	else
-		ft_print_error("Error: unvalid map\n", data);
+		ft_print_error("Error: some characters is wrong\n", data);
 }

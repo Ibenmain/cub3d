@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:09:39 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/12 18:56:06 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/14 22:10:16 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,6 @@ int	ft_check_error_tab(char **tab)
 	return (nb);
 }
 
-void	test_len(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->map[i])
-	{
-		printf("%s\n", data->map[i]);
-		i++;
-	}
-}
-
 int	main(int ac, char **av)
 {
 	t_data	*data;
@@ -97,16 +85,6 @@ int	main(int ac, char **av)
 	ft_check_duplicat(data);
 	ft_get_max_line(data);
 	ft_divide_down_map(data);
-	test_len(data);
-	// printf("%d\n", data->map1.nb_dir);
-	// system("leaks cub3d");
-	// int i = 0;
-	// while (data->map[i])
-	// {
-	// 	printf("%s\n", data->map[i]);
-	// 	i++;
-	// }
-	// ft_divide_up_map(data);
-	// ft_check_error_map_dir(data);
+	ft_check_redirection(data);
 	return (0);
 }

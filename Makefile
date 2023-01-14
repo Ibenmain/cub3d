@@ -6,7 +6,7 @@ CC = cc
 RM = rm -rf
 SRCS = cub3d_src/main.c cub3d_src/get_next_line.c cub3d_src/get_next_line_utils.c\
 		cub3d_src/error_up_map.c cub3d_src/error_up_map1.c cub3d_src/error_up_map2.c \
-		cub3d_src/parssing.c 
+		cub3d_src/parssing.c cub3d_src/error_redirection.c
 OBJS = $(SRCS:.c=.o)
 
 all:$(NAME)

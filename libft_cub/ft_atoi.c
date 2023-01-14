@@ -6,10 +6,11 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 14:42:01 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/10 14:34:12 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/14 22:02:22 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:37:57 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/14 23:16:43 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/15 22:50:16 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,49 @@ void	ft_color_and_floor(char **tab, t_data *data)
 	}
 	else
 		ft_print_error("Error: some characters is wrong\n", data);
+}
+
+char	*ft_duplicat(char *str, t_data *data)
+{
+	char	*tab;
+	int		i;
+
+	tab = (char *)malloc(sizeof(char *) * data->biggest_line + 1);
+	if (!tab)
+		ft_print_error("error allocation", data);
+	i = 0;
+	while (str[i] != '\n')
+	{
+		tab[i] = str[i];
+		i++;
+	}
+	tab[i++] = ' ';
+	tab[i] = '\0';
+	return (tab);
+}
+
+char	*ft_dup_with_space(char *line, t_data *data)
+{
+	char	*tab;
+	int		i;
+	int		j;
+
+	tab = (char *)malloc(sizeof(char *) * data->biggest_line + 1);
+	if (!tab)
+		ft_print_error("error allocation", data);
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '\n')
+		{
+			j = i;
+			while (j < data->biggest_line)
+				tab[j++] = ' ';
+			tab[j] = '\0';
+		}
+		else
+			tab[i] = line[i];
+		i++;
+	}
+	return (tab);
 }

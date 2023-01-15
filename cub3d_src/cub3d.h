@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:24:59 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/15 14:08:11 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/15 22:51:07 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,11 @@ typedef struct s_map1
 }				t_map1;
 
 typedef struct s_dir{
-	int		N;
-	int		S;
-	int		W;
-	int		E;
+	int		n;
+	int		s;
+	int		w;
+	int		e;
+	int		x;
 }		t_dir;
 
 typedef struct s_data{
@@ -90,4 +91,6 @@ void	ft_check_duplicat(t_data *data);
 void	ft_get_max_line(t_data *data);
 void	ft_check_redirection(t_data *data);
 int		ft_check_wall(t_data *data);
+char	*ft_duplicat(char *str, t_data *data);
+char	*ft_dup_with_space(char *line, t_data *data);
 #endif

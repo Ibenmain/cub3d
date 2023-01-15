@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:24:59 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/15 22:51:07 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/15 22:59:13 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,10 @@ void	ft_get_map(char *name_map, t_data *data);
 void	ft_map_size(char *map, t_data *data);
 void	ft_divide_down_map(t_data *data);
 int		ft_check_name_map(char *map_name);
-void	ft_size_divide_map(t_data *data);
-void	ft_divide_up_map(t_data *data);
 void	ft_print_error(char *str, void	*data);
 int		ft_check_line(char *line);
 int		ft_check_error_tab(char **tab);
 void	ft_get_map(char *name_map, t_data *data);
-void	ft_check_error_map_dir(t_data *data);
 void	ft_directione(char **tab, t_data *data);
 void	ft_range_of_color(char	*line, t_data *data);
 void	ft_color_and_floor(char **tab, t_data *data);

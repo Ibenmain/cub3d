@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:24:59 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/14 23:01:44 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/15 14:08:11 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ typedef struct s_map1
 	int		c_dup;
 }				t_map1;
 
+typedef struct s_dir{
+	int		N;
+	int		S;
+	int		W;
+	int		E;
+}		t_dir;
+
 typedef struct s_data{
 	char	**all_map;
 	char	**map_dir;
@@ -50,6 +57,7 @@ typedef struct s_data{
 	int		val2;
 	int		val3;
 	t_map1	map1;
+	t_dir	dir;
 
 }		t_data;
 

@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:24:59 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/15 22:59:13 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/16 21:50:45 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,14 @@
 # define CUB3D_H
 # include "../libft_cub/libft.h"
 # include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <mlx.h>
 # include <fcntl.h>
 # define BUFFER_SIZE 1024
+
+# define SIZE_IMG 60
+# define SIZE_MINI 15
 
 typedef struct s_map1
 {
@@ -38,6 +44,14 @@ typedef struct s_map1
 	int		c_dup;
 }				t_map1;
 
+typedef struct s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
+
 typedef struct s_dir{
 	int		n;
 	int		s;
@@ -45,6 +59,11 @@ typedef struct s_dir{
 	int		e;
 	int		x;
 }		t_dir;
+
+typedef struct s_mlx{
+	void	*mx;
+	void	*mlx_win;
+}		t_mlx;
 
 typedef struct s_data{
 	char	**all_map;
@@ -59,6 +78,8 @@ typedef struct s_data{
 	int		val3;
 	t_map1	map1;
 	t_dir	dir;
+	t_mlx	mlx;
+	t_img	img;
 
 }		t_data;
 
@@ -90,4 +111,13 @@ void	ft_check_redirection(t_data *data);
 int		ft_check_wall(t_data *data);
 char	*ft_duplicat(char *str, t_data *data);
 char	*ft_dup_with_space(char *line, t_data *data);
+void	ft_cub3d(t_data *data);
+int		ft_mlx_wind(t_data *data);
+int		get_line_map(t_data *data);
+int		ft_check_spase(char *line);
+int		get_line_map(t_data *data);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	draw_rectangle(int x, int y, t_data *data, int color);
+void	ft_put_image_to_win(t_data *data, int line_map);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:09:39 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/15 19:13:36 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:10:59 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,5 +86,6 @@ int	main(int ac, char **av)
 	ft_get_max_line(data);
 	ft_divide_down_map(data);
 	ft_check_redirection(data);
+	ft_cub3d(data);
 	return (0);
 }

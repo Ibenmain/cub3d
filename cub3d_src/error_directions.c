@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 22:43:33 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/15 22:49:46 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/16 18:12:33 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_check_wall(t_data *data)
 
 	i = 0;
 	j = 0;
+	if (!data->map[0])
+		ft_print_error("Error: messing map\n", data);
 	line = data->map[0];
 	line2 = data->map[data->j - 1];
 	if (line[0] != '1' && line[0] != ' ')

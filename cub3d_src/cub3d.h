@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:24:59 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/16 21:50:45 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/17 23:46:23 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@
 # include <stdlib.h>
 # include <mlx.h>
 # include <fcntl.h>
+# include <math.h>
 # define BUFFER_SIZE 1024
 
 # define SIZE_IMG 60
-# define SIZE_MINI 15
+# define SIZE_MINI 30
+# define TURNDIRECTION 0
+# define WALKDIRECTION 0
+# define MOVESPEED 2.0  
 
 typedef struct s_map1
 {
@@ -65,10 +69,18 @@ typedef struct s_mlx{
 	void	*mlx_win;
 }		t_mlx;
 
+typedef struct s_player{
+	int	x;
+	int	y;
+	int	radius;
+}		t_player;
+
 typedef struct s_data{
 	char	**all_map;
 	char	**map_dir;
 	char	**map;
+	int		line_max;
+	int		len;
 	int		line_map;
 	int		i;
 	int		j;
@@ -80,7 +92,6 @@ typedef struct s_data{
 	t_dir	dir;
 	t_mlx	mlx;
 	t_img	img;
-
 }		t_data;
 
 char	*get_next_line(int fd);
@@ -119,5 +130,6 @@ int		get_line_map(t_data *data);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_rectangle(int x, int y, t_data *data, int color);
 void	ft_put_image_to_win(t_data *data, int line_map);
+void	draw_circle(t_data *data, int x, int y, int r);
 
 #endif

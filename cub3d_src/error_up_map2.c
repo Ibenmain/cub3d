@@ -6,11 +6,21 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 14:37:57 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/15 22:50:16 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:15:25 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	ft_initialisation_var(t_data *data)
+{
+	data->map1.so_dup = 0;
+	data->map1.no_dup = 0;
+	data->map1.we_dup = 0;
+	data->map1.ea_dup = 0;
+	data->map1.f_dup = 0;
+	data->map1.c_dup = 0;
+}
 
 void	ft_range_of_color(char *line, t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:09:39 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/17 17:46:53 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/21 00:41:41 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,18 @@ int	ft_check_error_tab(char **tab)
 	return (nb);
 }
 
+void	ft_init_player(t_data *data)
+{
+	data->player.rotationangl = 0;
+	data->player.movespeed = 3;
+	data->player.walkdirection = 0;
+	data->player.sidedirection = 0;
+	data->player.turndirection = 0;
+	data->player.rotationspeed = 3 * (M_PI / 180);
+	data->player.i = -1;
+	data->player.j = -1;
+}
+
 int	main(int ac, char **av)
 {
 	t_data	*data;
@@ -86,6 +98,7 @@ int	main(int ac, char **av)
 	ft_get_max_line(data);
 	ft_divide_down_map(data);
 	ft_check_redirection(data);
+	ft_init_player(data);
 	ft_cub3d(data);
 	return (0);
 }

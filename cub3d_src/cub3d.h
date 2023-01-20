@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:24:59 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/17 23:46:23 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/21 00:30:42 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,21 @@
 # include <math.h>
 # define BUFFER_SIZE 1024
 
-# define SIZE_IMG 60
-# define SIZE_MINI 30
+
+# define LEFT_KEY 123
+# define RIGHT_KEY 124
+# define DOWN_KEY 125
+# define UP_KEY 126
+# define ESC_KEY 53
+# define W 13
+# define S 1
+# define A 0
+# define D 2
+# define ESC 53
+
+# define LENGHT_WIN 1400
+# define WIDTH_WIN 800
+# define TILE_SIZE 30
 # define TURNDIRECTION 0
 # define WALKDIRECTION 0
 # define MOVESPEED 2.0  
@@ -70,28 +83,34 @@ typedef struct s_mlx{
 }		t_mlx;
 
 typedef struct s_player{
-	int	x;
-	int	y;
-	int	radius;
+	double	i;
+	double	j;
+	double	rotationangl;
+	double	walkdirection;
+	double	sidedirection;
+	double	turndirection;
+	double	rotationspeed;
+	double	movespeed;
 }		t_player;
 
 typedef struct s_data{
-	char	**all_map;
-	char	**map_dir;
-	char	**map;
-	int		line_max;
-	int		len;
-	int		line_map;
-	int		i;
-	int		j;
-	int		biggest_line;
-	int		val1;
-	int		val2;
-	int		val3;
-	t_map1	map1;
-	t_dir	dir;
-	t_mlx	mlx;
-	t_img	img;
+	char		**all_map;
+	char		**map_dir;
+	char		**map;
+	int			line_max;
+	int			len;
+	int			line_map;
+	int			i;
+	int			j;
+	int			biggest_line;
+	int			val1;
+	int			val2;
+	int			val3;
+	t_map1		map1;
+	t_dir		dir;
+	t_mlx		mlx;
+	t_img		img;
+	t_player	player;
 }		t_data;
 
 char	*get_next_line(int fd);
@@ -129,7 +148,10 @@ int		ft_check_spase(char *line);
 int		get_line_map(t_data *data);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_rectangle(int x, int y, t_data *data, int color);
-void	ft_put_image_to_win(t_data *data, int line_map);
+int		ft_put_image_to_win(t_data *data);
 void	draw_circle(t_data *data, int x, int y, int r);
-
+void	ft_initialisation_var(t_data *data);
+void	ft_data_player(t_data *data);
+int		ft_player_movement(t_data *data);
+void	draw_line(t_data *data, int x, int y, int color);
 #endif

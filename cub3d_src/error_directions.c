@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/15 22:43:33 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/16 18:12:33 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/20 16:13:35 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	ft_parssing_map(t_data *data)
 
 	data->i = 0;
 	data->map1.nb_dir = 0;
+	ft_initialisation_var(data);
 	while (data->all_map[data->i])
 	{
 		j = 0;

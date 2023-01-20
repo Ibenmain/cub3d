@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:30:20 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/17 23:12:16 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/20 23:58:03 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x >= 0 && x <= data->line_max * SIZE_MINI \
-		&& y >= 0 && y <= data->len * SIZE_MINI)
+	if (x >= 0 && x < LENGHT_WIN && y >= 0 && y < WIDTH_WIN)
 	{
 		dst = data->img.addr + (y * data->img.line_length + x * \
 			(data->img.bits_per_pixel / 8));
@@ -62,14 +61,14 @@ void	draw_rectangle(int x, int y, t_data *data, int color)
 	int	i;
 	int	j;
 
-	i = x * SIZE_MINI;
-	while (i < x * SIZE_MINI + SIZE_MINI)
+	i = x * TILE_SIZE;
+	while (i < x * TILE_SIZE + TILE_SIZE)
 	{
-		j = y * SIZE_MINI;
-		while (j < y * SIZE_MINI + SIZE_MINI)
+		j = y * TILE_SIZE;
+		while (j < y * TILE_SIZE + TILE_SIZE)
 		{
-			if (i % SIZE_MINI == 0 || j % SIZE_MINI == 0)
-				my_mlx_pixel_put(data, j, i, 0x0033FFFF);
+			if (i % TILE_SIZE == 0 || j % TILE_SIZE == 0)
+				my_mlx_pixel_put(data, j, i, 0x00404040);
 			else
 				my_mlx_pixel_put(data, j, i, color);
 			j++;
@@ -78,32 +77,29 @@ void	draw_rectangle(int x, int y, t_data *data, int color)
 	}
 }
 
-void	ft_put_image_to_win(t_data *data, int line_map)
+int	ft_put_image_to_win(t_data *data)
 {
 	int		i;
 	int		j;
-	int		color;
 
-	i = 0;
-	while (i < line_map)
+	i = -1;
+	while (++i < data->len)
 	{
-		j = 0;
-		while (j < data->line_max)
+		j = -1;
+		while (++j < data->line_max)
 		{
 			if (data->map[i][j] != ' ')
 			{
 				if (data->map[i][j] == '1')
-					color = 0x000066CC;
-				else if (data->map[i][j] == '0')
-					color = 0x00CCCCFF;
+					draw_rectangle(i, j, data, 0x000066CC);
 				else
-					color = 0x00990000;
-				draw_rectangle(i, j, data, color);
+					draw_rectangle(i, j, data, 0x00CCCCFF);
 			}
-			j++;
 		}
-		i++;
 	}
+	draw_circle(data, data->player.i, data->player.j, 0x00990000);
+	draw_line(data, data->player.i, data->player.j, 0x00990000);
 	mlx_put_image_to_window(data->mlx.mx, data->mlx.mlx_win, \
 		data->img.img, 0, 0);
+	return (0);
 }

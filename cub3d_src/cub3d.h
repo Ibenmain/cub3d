@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:24:59 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/21 22:26:07 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:34:35 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ typedef struct s_player{
 	double	turndirection;
 	double	rotationspeed;
 	double	movespeed;
+	double	fov_angle;
+	double	num_ray;
+	double	ray_angle;
 }		t_player;
 
 typedef struct s_data{
@@ -149,12 +152,14 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	draw_rectangle(int x, int y, t_data *data, int color);
 int		ft_put_image_to_win(t_data *data);
 void	draw_circle(t_data *data, int x, int y, int r);
+void	draw_line(t_data *data, int x, int y, int color);
+void	draw_ray(t_data *data, int x, int y, int color);
 void	ft_initialisation_var(t_data *data);
 void	ft_data_player(t_data *data);
 int		ft_player_movement(t_data *data);
-void	draw_line(t_data *data, int x, int y, int color);
 int		key_pressed(int keycode, t_data *data);
 int		key_release(int keycode, t_data *data);
 void	ft_init_player(t_data *data);
 void	ft_mlx_loop(t_data *data);
+
 #endif

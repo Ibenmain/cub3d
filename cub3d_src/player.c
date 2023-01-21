@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 17:59:01 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/21 22:26:37 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/22 00:55:55 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,23 +74,42 @@ void	draw_circle(t_data *data, int x, int y, int color)
 
 void	draw_line(t_data *data, int x, int y, int color)
 {
+	double	j;
+	double	x1;
+	double	y1;
+
+	j = 0;
+	while (j < 20)
+	{
+		x1 = j * cos(data->player.rotationangl) * 5;
+		y1 = j * sin(data->player.rotationangl) * 5;
+		my_mlx_pixel_put(data, y + y1, x + x1, color);
+		j += 0.1;
+	}
+}
+
+void	draw_ray(t_data *data, int x, int y, int color)
+{
 	double	i;
 	double	j;
 	double	x1;
 	double	y1;
 
 	j = 0;
-	while (j < 10)
+	i = 0;
+	data->player.ray_angle = data->player.rotationangl - (data->player.fov_angle / 2);
+	while (i < data->player.num_ray)
 	{
-		i = 0;
-		while (i < 2)
+		j = 0;
+		while (j < 10)
 		{
-			x1 = j * cos(data->player.rotationangl) * 5;
-			y1 = j * sin(data->player.rotationangl) * 5;
+			x1 = j * cos(data->player.ray_angle) * 10;
+			y1 = j * sin(data->player.ray_angle) * 10;
 			my_mlx_pixel_put(data, y + y1, x + x1, color);
-			i += 0.1;
+			j += 0.1;
 		}
-		j += 0.1;
+		data->player.ray_angle += data->player.fov_angle / data->player.num_ray;
+		i++;
 	}
 }
 

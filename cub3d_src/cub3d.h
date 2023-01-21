@@ -6,7 +6,7 @@
 /*   By: ibenmain <ibenmain@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:24:59 by ibenmain          #+#    #+#             */
-/*   Updated: 2023/01/21 00:30:42 by ibenmain         ###   ########.fr       */
+/*   Updated: 2023/01/21 22:26:07 by ibenmain         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <fcntl.h>
 # include <math.h>
 # define BUFFER_SIZE 1024
-
 
 # define LEFT_KEY 123
 # define RIGHT_KEY 124
@@ -154,4 +153,8 @@ void	ft_initialisation_var(t_data *data);
 void	ft_data_player(t_data *data);
 int		ft_player_movement(t_data *data);
 void	draw_line(t_data *data, int x, int y, int color);
+int		key_pressed(int keycode, t_data *data);
+int		key_release(int keycode, t_data *data);
+void	ft_init_player(t_data *data);
+void	ft_mlx_loop(t_data *data);
 #endif
